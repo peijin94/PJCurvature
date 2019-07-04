@@ -1,0 +1,24 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\title{Numerical Solution for the Line Curvature}
+\author{Peijin Zhang}
+\begin{document}
+	\maketitle
+	\section{Formular}
+	The expression of curvature:
+	\begin{equation}
+	\kappa = \frac{\ddot{\vec{r}}\times\dot{\vec{r}}}{\left| \dot{\vec{r}}\right|^3}
+	\end{equation}
+	In 2D:
+	\begin{equation}
+	\kappa = \frac{x''y'-x'y''}{\left( (x')^2+(y')^2\right)^{3/2}}
+	\end{equation}
+	With three points $(x_1,y_1), (x_2,y_2), (x_3,y_3)$, to estimate the curvature, we firstly fit the three point to a 2D expression of parametric equation:
+	\begin{equation}
+	\left\{ \begin{matrix} x = a_1 +a_2 t+a_3 t^2\\ y= b_1 +b_2 t+b_3 t^2 \end{matrix} \right.
+	\end{equation}
+	With upper and lower limit of $t_a$ and $t_b$
+	
+	\section{Usage}
+\end{document}
