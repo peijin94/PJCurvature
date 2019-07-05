@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{graphicx}
 \usepackage{amsmath}
+\usepackage{hyperref}
 \title{Numerical Solution for the Line Curvature}
 \author{Peijin Zhang}
 \begin{document}
@@ -25,12 +26,33 @@
 	 to the parametric equation:
 	 \begin{align}
 	 \left\{ \begin{matrix} x_1 &= & a_1 &- a_2 t_a +a_3 t_a^2\\ x_2 &= &a_1 &\\ x_3 &= &a_1 &+ a_2 t_b + a_3 t_b^2 \end{matrix} \right.
+	 \label{eq:7}
 	 \end{align}
 	 and
 	 \begin{align}
 	 \left\{ \begin{matrix} y_1 &= & b_1 &- b_2 t_a + b_3 t_a^2\\ y_2 &= &b_1 &\\ y_3 &= &b_1 &+ b_2 t_b + b_3 t_b^2 \end{matrix} \right.
+	 \label{eq:8}
 	 \end{align}
-
-	
-	\section{Usage}
+	 Rewrite the Equation (\ref{eq:7},\ref{eq:8}) into matrix form:
+	 \begin{equation}
+	 \left( \begin{matrix} x_1\\ x_2\\ x_3\\ \end{matrix} \right) = \left( \begin{matrix} 1& -t_a &t_a^2\\ 1& 0 & 0\\ 1& t_b& t_b^2\\ \end{matrix} \right) \left( \begin{matrix} a_1\\ a_2\\ a_3\\ \end{matrix} \right) 
+	 \end{equation}
+	 and
+	 \begin{equation}
+	 \left( \begin{matrix} y_1\\ y_2\\ y_3\\ \end{matrix} \right) = \left( \begin{matrix} 1& -t_a &t_a^2\\ 1& 0 & 0\\ 1& t_b& t_b^2\\ \end{matrix} \right) \left( \begin{matrix} b_1\\ b_2\\ b_3\\ \end{matrix} \right) 
+	 \end{equation}
+	 The equation can be solved by directly inverse the matrix:
+	 \begin{align}
+	 A = M^{-1}X\\ B = M^{-1}Y
+	 \end{align}
+	 So we have $(a_1,a_2,a_3)$ and $(b_1,b_2,b_3)$, with which we can derive the parametric equation of the curve. The derivation of the curve is:
+	 \begin{align*}
+	 x'= \left.\frac{dx}{dt}\right|_{t=0}& = a_2\\ x''= \left.\frac{d^2x}{dt^2}\right|_{t=0}& =2 a_3\\ y'= \left.\frac{dy}{dt}\right|_{t=0}& = b_2\\ y''= \left.\frac{d^2y}{dt^2}\right|_{t=0}& =2 b_3
+	 \end{align*}
+	 Back to Equantion (2), we have:
+	 \begin{equation}
+	 \kappa = \frac{x''y'-x'y''}{\left( (x')^2+(y')^2\right)^{3/2}} = \frac{2(a_3 b_2-a_2 b_3)}{(a_2^2+b_2^2)^{3/2}}
+	 \end{equation}
+	 \section{Usage}
+	See \url{https://github.com/Pjer-zhang/PJCurvature} for detail
 \end{document}
